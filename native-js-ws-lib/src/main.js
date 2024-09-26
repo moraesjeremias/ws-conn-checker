@@ -19,5 +19,10 @@ ws.onerror = (error) => {
 
 // Log the WebSocket closing event
 ws.onclose = (event) => {
-    console.log('WebSocket connection closed:', event);
+  console.log("WebSocket connection closed:", event);
+  process.exit(1)
+};
+
+ws.pong = () => {
+  console.log("Prevented pong response");
 };

@@ -30,7 +30,7 @@ spec:
             memory: 500Mi
         securityContext:
           privileged: true
-      - image: moraesjeremias/ws-conn-checker:v0.0.1
+      - image: moraesjeremias/ws-conn-checker:v0.0.2
         imagePullPolicy: Always
         name: ws-conn-checker
         resources:
