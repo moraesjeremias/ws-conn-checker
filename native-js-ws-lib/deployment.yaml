@@ -1,0 +1,49 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    run: ws-debugger-deployment
+  name: ws-debugger-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      run: ws-debugger-pod
+  template:
+    metadata:
+      labels:
+        run: ws-debugger-pod
+    spec:
+      containers:
+      - command:
+        - sleep
+        - infinity
+        image: moraesjeremias/net-tools-tbsh
+        imagePullPolicy: Always
+        name: ws-net-tools-debugger
+        resources:
+          requests:
+            cpu: 10m
+            memory: 100Mi
+          limits:
+            cpu: 100m
+            memory: 500Mi
+        securityContext:
+          privileged: true
+      - image: moraesjeremias/ws-conn-checker:v0.0.1
+        imagePullPolicy: Always
+        name: ws-conn-checker
+        resources:
+          requests:
+            cpu: 100m
+            memory: 200Mi
+          limits:
+            cpu: 100m
+            memory: 200Mi
+        env:
+        - name: WS_SERVER
+          value: "<PLACEHOLDER>"
+      dnsPolicy: ClusterFirst
+      enableServiceLinks: true
+      imagePullSecrets:
+      - name: availj
