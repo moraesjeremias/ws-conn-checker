@@ -23,11 +23,11 @@ spec:
         name: ws-net-tools-debugger
         resources:
           requests:
-            cpu: 10m
-            memory: 100Mi
+            cpu: 100m
+            memory: 50Mi
           limits:
             cpu: 100m
-            memory: 500Mi
+            memory: 100Mi
         securityContext:
           privileged: true
       - image: moraesjeremias/ws-conn-checker:v0.0.2
