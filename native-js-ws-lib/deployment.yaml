@@ -29,7 +29,7 @@ spec:
       - command:
         - sleep
         - infinity
-        image: moraesjeremias/net-tools-tbsh
+        image: moraesjeremias/net-tools-tbsh:v1.0.0
         imagePullPolicy: Always
         name: ws-net-tools-debugger
         resources:
@@ -53,7 +53,7 @@ spec:
             memory: 200Mi
         env:
         - name: WS_SERVER
-          value: "<PLACEHOLDER>"
+          value: <PLACEHOLDER>
       dnsPolicy: ClusterFirst
       enableServiceLinks: true
       imagePullSecrets:

@@ -42,7 +42,7 @@ spec:
             memory: 200Mi
         env:
         - name: WS_SERVER
-          value: "ws://188.166.29.251:8546"
+          value: <PLACEHOLDER>
       dnsPolicy: ClusterFirst
       enableServiceLinks: true
       imagePullSecrets:
