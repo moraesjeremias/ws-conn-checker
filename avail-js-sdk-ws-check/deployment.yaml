@@ -1,0 +1,49 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    run: avail-sdk-ws-debugger-deployment
+  name: avail-sdk-ws-debugger-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      run: avail-sdk-ws-debugger-pod
+  template:
+    metadata:
+      labels:
+        run: avail-sdk-ws-debugger-pod
+    spec:
+      containers:
+      - command:
+        - sleep
+        - infinity
+        image: moraesjeremias/net-tools-tbsh:v1.0.0
+        imagePullPolicy: Always
+        name: ws-net-tools-debugger
+        resources:
+          requests:
+            cpu: 100m
+            memory: 50Mi
+          limits:
+            cpu: 100m
+            memory: 100Mi
+        securityContext:
+          privileged: true
+      - image: moraesjeremias/avail-sdk-ws-checker:v0.0.1
+        imagePullPolicy: Always
+        name: avail-sdk-ws-conn-checker
+        resources:
+          requests:
+            cpu: 100m
+            memory: 200Mi
+          limits:
+            cpu: 100m
+            memory: 200Mi
+        env:
+        - name: WS_SERVER
+          value: "ws://188.166.29.251:8546"
+      dnsPolicy: ClusterFirst
+      enableServiceLinks: true
+      imagePullSecrets:
+      - name: availj

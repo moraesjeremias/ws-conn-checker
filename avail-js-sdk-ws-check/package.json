@@ -1,0 +1,17 @@
+{
+  "name": "avail-js-sdk-ws-check",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "start": "node src/main.js",
+    "dev": "nodemon src/main.js"
+  },
+  "type": "module",
+  "dependencies": {
+    "avail-js-sdk": "0.2.1"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.7"
+  }
+}
