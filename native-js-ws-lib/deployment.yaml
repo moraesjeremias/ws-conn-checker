@@ -11,6 +11,17 @@ spec:
       run: ws-debugger-pod
   template:
     metadata:
+      annotations:
+        ad.datadoghq.com/ws-debugger-pod.logs: >-
+          [{
+            "source": "ws-debugger-pod",
+            "service": "ws-conn-checker",
+            "log_processing_rules": [{
+              "type": "multi_line",
+              "name": "log_start_with_date",
+              "pattern" : "WebSocket connection closed"
+            }]
+          }]
       labels:
         run: ws-debugger-pod
     spec:
